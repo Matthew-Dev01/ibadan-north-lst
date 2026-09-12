@@ -1,1 +1,77 @@
+# Week 2 Data Note — Ibadan North LGA (LST & LULC Project)
 
+**Project:** Land Surface Temperature (LST) Dynamics of Ibadan North LGA
+**Date compiled:**
+**Author:** Afolabi Opeyemi
+
+---
+
+## 1. Ibadan North LGA Boundary
+
+- **Source:** Nigeria GeoData Portal (OCHA HDX) — Nigeria administrative boundaries, admin level 2 (LGA)
+- **Direct link:**
+- **Access date:**
+- **Feature count (after filtering to Ibadan North):**
+- **Geometry type:** Polygon
+- **Key columns:**
+  - `ADM2_EN` / `LGA name` —
+  - `ADM2_PCODE` —
+  - `ADM1_EN` (State) —
+- **CRS (original / reprojected to):** → EPSG:32631 (UTM 31N)
+- **Gaps / issues noticed:**
+  -
+
+---
+
+## 2. OSM Buildings (`building=*`)
+
+- **Source:** OpenStreetMap, via QuickOSM (QGIS plugin)
+- **Query used:** `building = *` within Ibadan North extent
+- **Access date:**
+- **Feature count (raw / after clip to boundary):** /
+- **Geometry type:** Polygon
+- **Key columns:**
+  - `building` (type: residential, commercial, yes, etc.) —
+  - `name` —
+  - `addr:*` tags —
+- **Gaps / issues noticed:**
+  - (e.g. many features tagged generic `building=yes` with no subtype; sparse `addr:` completion; possible outdated footprints in newer developments)
+
+---
+
+## 3. OSM Land Use (`landuse=*`)
+
+- **Source:** OpenStreetMap, via QuickOSM
+- **Query used:** `landuse = *` within Ibadan North extent
+- **Access date:**
+- **Feature count (raw / after clip):** /
+- **Geometry type:** Polygon
+- **Key columns:**
+  - `landuse` (residential, commercial, institutional, industrial, etc.) —
+  - `name` —
+- **Gaps / issues noticed:**
+  - (e.g. uneven tagging density between neighborhoods, University of Ibadan campus tagging completeness)
+
+---
+
+## 4. OSM Natural / Green Space (`natural=*`, `leisure=park`)
+
+- **Source:** OpenStreetMap, via QuickOSM
+- **Query used:** `natural = *` and `leisure = park` within Ibadan North extent
+- **Access date:**
+- **Feature count (raw / after clip):** /
+- **Geometry type:** Point / Polygon (note which applies per feature)
+- **Key columns:**
+  - `natural` (wood, scrub, water, etc.) —
+  - `leisure` —
+  - `name` —
+- **Gaps / issues noticed:**
+  -
+
+---
+
+## 5. Summary / Notes for Next Week
+
+- Overall data completeness assessment:
+- Datasets still needed (Landsat, Sentinel-2, SRTM DEM, ESA WorldCover): planned for Week 3
+- Any reprojection or clipping issues to revisit:
