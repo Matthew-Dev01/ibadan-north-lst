@@ -1,1 +1,59 @@
+Week 2 Data Note — Ibadan North LGA (LST & LULC Project)
 
+Project: Land Surface Temperature (LST) Dynamics of Ibadan North LGA
+
+ 1. Ibadan North LGA Boundary
+
+Source: Nigeria GeoData Portal (OCHA HDX). Nigeria administrative boundaries, admin level 2 (LGA), part of the COD-AB (Common Operational Dataset)
+Direct link: https://data.humdata.org/dataset/cod-ab-nga
+
+Feature count (1 POLYGON)
+Geometry type: Polygon
+Key columns:
+  ADM2_EN / LGA name: Ibadan North
+  ADM2_PCODE: unique P-code identifying the LGA 
+  ADM1_EN (State):  "Oyo"
+CRS (original / reprojected to): EPSG:4326 (WGS 84) to EPSG:32631 (UTM Zone 31N)
+Gaps / issues noticed: Nil
+ 
+2. OSM Buildings (building=*)
+
+Source: OpenStreetMap, via QuickOSM (QGIS plugin)
+Query used: building = * within Ibadan North extent
+
+Geometry type: Polygon
+Key columns:
+  building (type: residential, commercial, yes, etc.): building type/use tag
+  name: building name, where tagged
+  addr:* tags: address components (housenumber, street, etc.), where tagged
+Gaps / issues noticed:
+  Many features are likely tagged generic building=yes with no subtype
+  Sparse addr:* completion is typical for Nigerian OSM data
+ 
+
+ 3. OSM Land Use (landuse=*)
+
+Source: OpenStreetMap, via QuickOSM
+Query used: landuse = * within Ibadan North extent
+
+Geometry type: Polygon
+Key columns:
+  landuse (residential, commercial, institutional, industrial, etc.): primary land use classification
+  name: named land use area, where tagged
+Gaps / issues noticed:
+  Tagging density is likely uneven between neighborhoods (older, well-mapped areas vs. newer or informal settlements)
+  Worth checking completeness of University of Ibadan campus tagging specifically, since it's a large, distinct land use zone within the LGA
+
+4. OSM Natural / Green Space (natural=*, leisure=park)
+
+Source: OpenStreetMap, via QuickOSM
+Query used: natural = * and leisure = park within Ibadan North extent
+
+Geometry type: Point / Polygon 
+Key columns:
+  natural (wood, scrub, water, etc.): natural feature classification
+  leisure: recreational green space tag (e.g. park)
+  name: feature name, where tagged
+
+Gaps / issues noticed: nil
+ 
