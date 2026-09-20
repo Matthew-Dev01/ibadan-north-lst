@@ -1,0 +1,26 @@
+ Week 03 - Ibadan North LGA - Data Preparation
+
+Study Area: Ibadan North Local Government, Oyo State (Area ~27 sq km)
+CRS Chosen: EPSG:32631 - WGS 84 / UTM Zone 31N
+Reason: Ibadan North lies at approx 3.9°E, within UTM Zone 31N. 
+
+I need metres for area/distance calculations. Geographic CRS EPSG:4326 
+uses degrees (0.0004 degree² is meaningless).
+
+What I Reprojected:
+- Raw settlement/building data from EPSG:4326 to EPSG:32631
+- Ibadan North boundary from EPSG:4326 to EPSG:32631
+
+What I Clipped:
+- All reprojected layers clipped to ibadan_north_boundary_32631.gpkg 
+using Vector > Geoprocessing > Clip
+
+Five Quality Checks:
+1. CRS Defined: PASS - All layers now show EPSG:32631 in Properties > Information
+2. Geometry Validity: Checked with Vector > Geometry Tools > Check Validity. [e.g 1 invalid polygon found and fixed with Fix Geometries]
+3. Duplicate Features: Checked with Delete duplicate geometries tool. [e.g No duplicates found / 3 duplicates removed]
+4. Attribute Completeness: Opened attribute table. [e.g 2 NULL values in 'type' field - flagged]
+5. Coverage/Extent: Visual check - data fully covers Ibadan North boundary, no gaps. Overlay matches.
+
+Analysis-Ready File Location:
+`data/analysis_ready/ibadan_north_final.gpkg`
