@@ -1,0 +1,30 @@
+ Expectations 
+Question
+How much of the land in Ibadan North LGA that changed from vegetation to built-up between 2015 and 2025 also experienced significant surface warming?
+
+Operation
+Intersection of (vegetation in 2015 to built-up in 2025) with (LST rise of 2 °C or more), in EPSG:32631, on a 30 m grid.
+
+What I expect
+
+| Quantity | My expectation | Reasoning |
+| LGA area | about 27 km² | Published area of Ibadan North LGA |
+| Pixels in the LGA at 30 m | about 30,000 | 27 km² / 900 m² per pixel |
+| Mean dry-season LST 2015 | 28 to 33 °C | Harmattan-season Landsat values over an urban area |
+| Mean dry-season LST 2025 | 30 to 36 °C | Expected warming of 1 to 3 °C |
+| Vegetation to built-up area | 3 to 6 km² (about 15 to 20% of the LGA) | Ongoing residential expansion |
+| Share of that land that warmed by 2 °C or more | 60 to 80% | Built-up surfaces retain more heat |
+| Share of the whole LGA that warmed by 2 °C or more | 30 to 45% | Warming is probably widespread, not only on changed land |
+| Number of intersection polygons | 50 to 200 | Pixel noise fragments the change areas |
+| LST range in each year | about 24 to 42 °C | Water and dense vegetation at the low end, bare or dense built-up at the high end |
+| Empty or invalid geometries | 0 | Polygons come from raster vectorisation, so none expected |
+
+Where I expect the pattern to appear
+- Change polygons mostly in the outer residential zones and along main roads.
+- Little change on the University of Ibadan campus.
+- Warming concentrated on dense built-up and cleared land.
+
+What would make me doubt the result
+- Mean LST falls between years (likely a scene-date or haze effect, not real cooling).
+- Change polygons in the middle of the UI campus or on rivers (likely misclassification).
+- Total counted area is far outside 27 km² (a boundary or CRS problem).
