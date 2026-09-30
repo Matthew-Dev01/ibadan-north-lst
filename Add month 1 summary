@@ -1,0 +1,23 @@
+Month 1 Summary
+
+Question: How much of the land in Ibadan North LGA that changed from vegetation to built-up between 2015 and 2025 also experienced significant surface warming?
+
+Operation: I ran an intersection (overlay) in EPSG:32631 between vegetation-to-built-up polygons and polygons where LST rose by 4 °C . This answers the part of my question that links LULC change to LST change.
+
+I used a projected CRS so areas are in m² and the scale bar is in metres. Landsat 8/9 Collection 2 Level-2 ST_B10 gives surface temperature directly, so no split-window step was needed.
+
+Scenes used: [2015-01-24 and 2025-01-29].
+
+Expected vs got: I expected about 4 km² of vegetation-to-built-up change, roughly 70% of it warming by 4 °C , in around 100 polygons. I got 5.4 km² , 75.9% warming, and 138 polygons.
+
+Checks:
+- Map: Polygons cluster in the north-east and along main roads and avoid the UI campus core. I saw no slivers or stripes at the LGA edge.
+- Row count/area: Expected about 100 polygons, got 138 . The difference is likely because 30 m pixel noise in the LULC classification splits large change areas into many small polygons.
+- One feature by hand: Polygon ID 12 : table area 18,900 m² . In QGIS, 4 pixels inside it showed LULC 2015 = vegetation, LULC 2025 = built-up, and ΔLST between 2.3 and 3.1 °C . QGIS area 18,900 m², so the two agree, which is expected since the polygon edges follow the 900 m² pixels.
+- Empty geometry: Empty: 0, null: 0, invalid: 0. No `make_valid()` was needed.
+
+Key numbers: LGA area 27.0 km². Mean LST 31.8 °C in 2015 and 34.2 °C in 2025 . Vegetation-to-built-up change 5.4 km², 20.0% of the LGA . Of that, 4.1 km² warmed by 2 °C or more. Whole LGA warmed by 4 °C : 41% .
+
+What surprised me: About 41% of the whole LGA warmed by 4°C or more  not just the changed land, so land cover change explains less of the warming than I assumed. 76% of changed land warmed against 41% for the LGA overall, so the link exists but is not the whole story.
+
+Data I still need: Additional dry-season scenes to confirm the pattern isn't a single-date effect, an accuracy assessment for both LULC maps (reference points), Sentinel-2 for finer classification, and 2015 validation data.
